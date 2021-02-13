@@ -1,7 +1,7 @@
 package com.datajpa.nplusone.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,9 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 public class Post {
 
@@ -25,5 +27,5 @@ public class Post {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="post_id")
-	private List<Comment> comments = new ArrayList<>();
+	private Set<Comment> comments = new HashSet<>();
 }
